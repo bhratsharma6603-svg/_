@@ -4,8 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>💖 Sorry Letter — Sweta 💖</title>
-<!-- Romantic + clean fonts -->
+
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg1:#ffe4ec;
@@ -26,11 +27,10 @@ body{
 .stage{
   width:100%;
   max-width:820px;
-  background:rgba(255,255,255,0.85);
+  background:rgba(255,255,255,0.9);
   border-radius:24px;
   padding:26px;
   text-align:center;
-  position:relative;
   box-shadow:0 18px 40px rgba(12,18,35,0.12);
   animation:fadeIn 1s ease forwards;
 }
@@ -95,6 +95,7 @@ h1{
 <div class="stage">
   <h1>💖 Sorry Letter for Sweta 💖</h1>
   <button id="playBtn" class="btn play">Play Song & Show Letter 🎵</button>
+
   <div id="letterWrap">
     <div id="letter"></div>
     <div class="controls">
@@ -103,10 +104,12 @@ h1{
     </div>
   </div>
 </div>
+
 <!-- Song -->
 <audio id="bgAudio" preload="auto">
   <source src="https://www.dropbox.com/scl/fi/pqsq50nagsnmzyvr7i5ta/AudioCutter_Tera-Yaar-Hoon-Main.mp3?rlkey=qwxp78iitej7spjsngbh7z4xh&st=b730ve62&dl=1" type="audio/mpeg">
 </audio>
+
 <script>
 const playBtn=document.getElementById('playBtn');
 const bgAudio=document.getElementById('bgAudio');
@@ -114,11 +117,12 @@ const letterWrap=document.getElementById('letterWrap');
 const letterEl=document.getElementById('letter');
 const nextBtn=document.getElementById('nextBtn');
 const prevBtn=document.getElementById('prevBtn');
-const parts=[
-`Dear Doremon ,meri pyari Chimkandi 😄
-Sabse pehle tho mai yahi kehna chahta hu ki haan, maine galti ki hai… aur honestly, ye galti itni badi hai ki agar Angry Bird tumhare haath me hota toh shayad mujhe hawa me uda deta 😅.`
-`But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.
 
+const parts=[
+`Dear Doremon (aka meri pyari Chimkandi 😄),<br><br>
+Sabse pehle tho mai yahi kehna chahta hu ki haan, maine galti ki hai… aur honestly, ye galti itni badi hai ki agar Angry Bird tumhare haath me hota toh shayad mujhe hawa me uda deta 😅.`,
+
+`But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.<br>
 Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyon ki partner ho, aur kabhi-kabhi meri personal life ki unofficial therapist bhi 😜.`,
 
 `Aur mai janta hu ki maine kuch aise moments create kiye jisse tumhe bura laga, aur mujhe ab realize hua ki mere chote-chote jokes kabhi kabhi bahut impact kar dete hain.`,
@@ -126,32 +130,40 @@ Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyo
 `Mujhe yaad hai kaise tum hamesha meri har stupid baat par hans deti thi, aur meri har sharaarat ko tolerate karti thi. Aur ab wahi sharaarat maine ki jiski wajah se tum naraz ho gayi.`,
 
 `Angry Bird wali tumhari energy aur meri har choti galti ko handle karna honestly mera biggest challenge hai 😅.`,
+
 `Mai janta hu ki sirf “sorry” bolna enough nahi hai, but believe me, ye sorry mera dil se hai.`,
 
-`Mai tumhare bina apni har crazy, funny aur boring din ki imagination bhi nahi kar sakta. Tumhare jokes, tumhari annoying baatein, tumhari hasi ke chote-chote moments… sab mujhe miss ho rahe hain.`,
+`Mai tumhare bina apni har crazy, funny aur boring din ki imagination bhi nahi kar sakta.<br>
+Tumhare jokes, tumhari annoying baatein, tumhari hasi ke chote-chote moments… sab mujhe miss ho rahe hain.`,
 
 `Chimkandi, mai promise karta hu ki ab se mai zyada careful rahunga, zyada understanding dikhauga (thodi-thodi 😂), aur kabhi bhi tumhare dil ko hurt karne wala kaam nahi karunga.`,
 
 `Tum meri bestie ho, meri family jaisi, aur mujhe tumhare bina apni life incomplete lagti hai.`,
 
-`Sorry Sweta! Tum meri bestie ho aur hamesha rahogi.
-Mai tumhe bahut miss kar raha hu! ❤️
-
+`Sorry Sweta! Tum meri bestie ho aur hamesha rahogi.<br>
+Mai tumhe bahut miss kar raha hu! ❤️<br><br>
 Tumhara bestu,<br>Bhrat`
 ];
+
 let currentPart=0;
-function typeText(text){
+function typeText(html){
   letterEl.innerHTML="";
+  let temp=document.createElement('div');
+  temp.innerHTML=html;
+  let text=temp.innerHTML;
   let i=0;
   function step(){
     if(i<text.length){
-      letterEl.innerHTML+=text[i];
+      letterEl.innerHTML=text.slice(0,i)+"|";
       i++;
       setTimeout(step,15);
+    }else{
+      letterEl.innerHTML=text;
     }
   }
   step();
 }
+
 playBtn.addEventListener('click',()=>{
   playBtn.style.display='none';
   letterWrap.style.display='block';
