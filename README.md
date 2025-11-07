@@ -4,10 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>💖 Sorry Letter — Sweta 💖</title>
-
 <!-- Romantic + clean fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg1:#ffe4ec;
@@ -97,7 +95,6 @@ h1{
 <div class="stage">
   <h1>💖 Sorry Letter for Sweta 💖</h1>
   <button id="playBtn" class="btn play">Play Song & Show Letter 🎵</button>
-
   <div id="letterWrap">
     <div id="letter"></div>
     <div class="controls">
@@ -106,12 +103,10 @@ h1{
     </div>
   </div>
 </div>
-
 <!-- Song -->
 <audio id="bgAudio" preload="auto">
   <source src="https://www.dropbox.com/scl/fi/pqsq50nagsnmzyvr7i5ta/AudioCutter_Tera-Yaar-Hoon-Main.mp3?rlkey=qwxp78iitej7spjsngbh7z4xh&st=b730ve62&dl=1" type="audio/mpeg">
 </audio>
-
 <script>
 const playBtn=document.getElementById('playBtn');
 const bgAudio=document.getElementById('bgAudio');
@@ -119,11 +114,9 @@ const letterWrap=document.getElementById('letterWrap');
 const letterEl=document.getElementById('letter');
 const nextBtn=document.getElementById('nextBtn');
 const prevBtn=document.getElementById('prevBtn');
-
 const parts=[
-`Dear Doremon (aka meri pyari Chimkandi 😄),
+`Dear Doremon ,meri pyari Chimkandi 😄),
 Sabse pehle tho mai yahi kehna chahta hu ki haan, maine galti ki hai… aur honestly, ye galti itni badi hai ki agar Angry Bird tumhare haath me hota toh shayad mujhe hawa me uda deta 😅.`,
-
 `But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.
 
 Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyon ki partner ho, aur kabhi-kabhi meri personal life ki unofficial therapist bhi 😜.`,
@@ -133,7 +126,6 @@ Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyo
 `Mujhe yaad hai kaise tum hamesha meri har stupid baat par hans deti thi, aur meri har sharaarat ko tolerate karti thi. Aur ab wahi sharaarat maine ki jiski wajah se tum naraz ho gayi.`,
 
 `Angry Bird wali tumhari energy aur meri har choti galti ko handle karna honestly mera biggest challenge hai 😅.`,
-
 `Mai janta hu ki sirf “sorry” bolna enough nahi hai, but believe me, ye sorry mera dil se hai.`,
 
 `Mai tumhare bina apni har crazy, funny aur boring din ki imagination bhi nahi kar sakta. Tumhare jokes, tumhari annoying baatein, tumhari hasi ke chote-chote moments… sab mujhe miss ho rahe hain.`,
@@ -142,11 +134,11 @@ Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyo
 
 `Tum meri bestie ho, meri family jaisi, aur mujhe tumhare bina apni life incomplete lagti hai.`,
 
-`Sorry Sweta! Tum meri bestie ho aur hamesha rahogi.<br>
+`Sorry Sweta! Tum meri bestie ho aur hamesha rahogi.
 Mai tumhe bahut miss kar raha hu! ❤️
+
 Tumhara bestu,<br>Bhrat`
 ];
-
 let currentPart=0;
 function typeText(text){
   letterEl.innerHTML="";
@@ -160,14 +152,12 @@ function typeText(text){
   }
   step();
 }
-
 playBtn.addEventListener('click',()=>{
   playBtn.style.display='none';
   letterWrap.style.display='block';
   bgAudio.play().catch(()=>{});
   typeText(parts[currentPart]);
 });
-
 nextBtn.addEventListener('click',()=>{
   if(currentPart<parts.length-1){
     currentPart++;
@@ -180,7 +170,6 @@ prevBtn.addEventListener('click',()=>{
     typeText(parts[currentPart]);
   }
 });
-  
 </script>
 </body>
 </html>
