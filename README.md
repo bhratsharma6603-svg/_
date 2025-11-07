@@ -33,15 +33,14 @@ body{
     padding:26px;
     box-shadow: 0 18px 40px rgba(12,18,35,0.12);
     position:relative;
-    overflow:visible;
     text-align:center;
+    overflow:visible;
 }
 .hearts{
     pointer-events:none;
     position:absolute;
     left:0;top:0;right:0;bottom:0;
     z-index:1;
-    overflow:visible;
 }
 #kittyWrap{position:relative;z-index:2}
 #kitty{
@@ -67,13 +66,14 @@ p.lead{color:var(--muted); margin:0 0 14px 0; z-index:2; position:relative}
     margin-top:22px;
     z-index:2;
     position:relative;
+    max-height:60vh; 
+    overflow-y:auto;
+    scroll-behavior: smooth;
 }
 #letter{
     background:rgba(255,255,255,0.92);
     border-radius:12px;
     padding:20px;
-    max-height:58vh;
-    overflow:auto;
     text-align:left;
     font-family:'Great Vibes', cursive;
     font-size:18px;
@@ -98,12 +98,12 @@ p.lead{color:var(--muted); margin:0 0 14px 0; z-index:2; position:relative}
     h1{font-size:28px}
     #letter{font-size:16px}
 }
-.dim::before{
+.stage.dim::before{
     content:'';
     position:absolute;left:0;right:0;top:0;bottom:0;
     background:rgba(255,255,255,0.3);
     backdrop-filter: blur(6px);
-    z-index:1;
+    z-index:0; /* behind letter */
     border-radius:20px;
 }
 .btn{
@@ -185,15 +185,12 @@ const bgAudio = document.getElementById('bgAudio');
 const heartsContainer = document.getElementById('hearts');
 const stage = document.getElementById('stage');
 
-// Letter parts (split for typewriter effect)
 const parts = [
 `Dear Doremon (aka meri pyari Chimkandi 😄),<br><br>
 Sabse pehle tho mai yahi kehna chahta hu ki haan, maine galti ki hai… aur honestly, ye galti itni badi hai ki agar Angry Bird tumhare haath me hota toh shayad mujhe hawa me uda deta 😅. But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.<br><br>
 Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyon ki partner ho, aur kabhi-kabhi toh meri personal life ki unofficial therapist bhi 😜. Aur mai janta hu ki maine kuch aise moments create kiye jisse tumhe bura laga, aur mujhe ab realize hua ki mere chote-chote jokes ya funny moments kabhi kabhi bahut impact kar dete hain.`,
-
 `Doremon, mujhe yaad hai kaise tum hamesha meri har stupid baat par hans deti thi, aur meri har sharaarat ko tolerate karti thi. Aur ab wahi sharaarat maine ki jiski wajah se tum naraz ho gayi. Angry Bird wali tumhari energy aur meri har choti galti ko handle karna honestly mera biggest challenge hai 😅.<br><br>
 Mai janta hu ki sirf “sorry” bolna enough nahi hai, but believe me, ye sorry mera dil se hai. Mai tumhare bina apni har crazy, funny aur boring din ki imagination bhi nahi kar sakta. Tumhare jokes, tumhari annoying baatein, tumhari hasi ke chote-chote moments… sab mujhe miss ho rahe hain.`,
-
 `Chimkandi, mai promise karta hu ki ab se mai zyada careful rahunga, zyada understanding dikhauga (thodi-thodi 😂), aur kabhi bhi tumhare dil ko hurt karne wala kaam nahi karunga. Tum meri bestie ho, meri family jaisi, aur mujhe tumhare bina apni life incomplete lagti hai.<br><br>
 Sweta, mai janta hu ki mai perfect nahi hu, but mai hamesha tumhare saath rehna chahta hu. Mai chahta hu ki hamari friendship wahi crazy, funny aur loving bani rahe, jisme hum ek dusre ki har stupid baat ko tolerate kar sake aur hasi ke saath life enjoy kare.<br><br>
 Toh please, mujhe forgive kar do. Doremon, Angry Bird, Chimkandi… tumhare har form ko mai equally miss kar raha hu 😭. Mujhe wapas apni crazy, funny aur loving bestie chahiye. Tumhare bina meri life ki story kuch adhoori si lagti hai.<br><br>
@@ -206,6 +203,7 @@ let currentPart = 0;
 
 function typeText(text, cb){
     letterEl.innerHTML='';
+    letterWrap.scrollTop = 0; // start top
     let i=0;
     function step(){
         if(i>=text.length){ cb && cb(); return;}
