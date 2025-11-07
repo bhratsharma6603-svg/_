@@ -121,10 +121,11 @@ const nextBtn=document.getElementById('nextBtn');
 const prevBtn=document.getElementById('prevBtn');
 
 const parts=[
-`Dear Doremon (aka meri pyari Chimkandi 😄),<br><br>
+`Dear Doremon (aka meri pyari Chimkandi 😄),
 Sabse pehle tho mai yahi kehna chahta hu ki haan, maine galti ki hai… aur honestly, ye galti itni badi hai ki agar Angry Bird tumhare haath me hota toh shayad mujhe hawa me uda deta 😅.`,
 
-`But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.<br>
+`But sach me, mera intention kabhi bhi tumhe hurt karne ka nahi tha.
+
 Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyon ki partner ho, aur kabhi-kabhi meri personal life ki unofficial therapist bhi 😜.`,
 
 `Aur mai janta hu ki maine kuch aise moments create kiye jisse tumhe bura laga, aur mujhe ab realize hua ki mere chote-chote jokes kabhi kabhi bahut impact kar dete hain.`,
@@ -142,7 +143,7 @@ Sweta, tum sirf meri bestie nahi ho, tum meri hasi ki wajah ho, meri pareshaniyo
 `Tum meri bestie ho, meri family jaisi, aur mujhe tumhare bina apni life incomplete lagti hai.`,
 
 `Sorry Sweta! Tum meri bestie ho aur hamesha rahogi.<br>
-Mai tumhe bahut miss kar raha hu! ❤️<br><br>
+Mai tumhe bahut miss kar raha hu! ❤️
 Tumhara bestu,<br>Bhrat`
 ];
 
