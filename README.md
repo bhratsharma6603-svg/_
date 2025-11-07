@@ -180,6 +180,7 @@ prevBtn.addEventListener('click',()=>{
     typeText(parts[currentPart]);
   }
 });
+  
 </script>
 </body>
 </html>
